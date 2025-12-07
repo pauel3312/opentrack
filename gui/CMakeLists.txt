@@ -10,7 +10,7 @@ target_compile_definitions(qlonglongspinbox PUBLIC  QLONGLONGSPINBOX_LIBRARY)
 
 set_target_properties(qlonglongspinbox PROPERTIES AUTOMOC ON)
 
-target_sources(qlonglongspinbox PRIVATE gui/qlonglongspinbox.h)
+target_sources(qlonglongspinbox PRIVATE qlonglongspinbox.h)
 
 
 otr_module(user-interface BIN)
