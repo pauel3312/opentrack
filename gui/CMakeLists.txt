@@ -1,3 +1,12 @@
+
+add_library(qlonglongspinbox SHARED qlonglongspinbox.cpp)
+
+target_include_directories(qlonglongspinbox PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/gui)
+
+target_link_libraries(qlonglongspinbox PRIVATE Qt6::Widgets)
+
+target_compile_definitions(qlonglongspinbox PUBLIC  QLONGLONGSPINBOX_LIBRARY)
+
 otr_module(user-interface BIN)
 
 target_link_libraries(${self} PRIVATE
@@ -6,6 +15,7 @@ target_link_libraries(${self} PRIVATE
     opentrack-input
     opentrack-spline
     opentrack-pose-widget
+    qlonglongspinbox
 )
 
 if(NOT APPLE AND NOT WIN32)
