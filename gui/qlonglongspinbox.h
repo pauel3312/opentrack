@@ -1,11 +1,17 @@
 #pragma once
 
+#if defined(QLONGLONGSPINBOX_LIBRARY)
+#define Q_LONGLONGSPINBOX_EXPORT Q_DECL_EXPORT
+#else
+#define Q_LONGLONGSPINBOX_EXPORT Q_DECL_IMPORT
+#endif
+
 #include <QtWidgets/QAbstractSpinBox>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QWidget>
 
 class QLongLongSpinBoxPrivate;
-class Q_WIDGETS_EXPORT QLongLongSpinBox : public QAbstractSpinBox
+class Q_LONGLONGSPINBOX_EXPORT QLongLongSpinBox : public QAbstractSpinBox
 {
     Q_OBJECT
 
@@ -70,7 +76,7 @@ public:
 
 protected:
     // bool event(QEvent *event);
-    virtual QValidator::State validate(QString& input, int& pos) const
+    virtual QValidator::State validate(QString& input) const
     {
         bool ok;
         qlonglong val = input.toLongLong(&ok);
@@ -103,8 +109,7 @@ public Q_SLOTS:
     void onEditFinished()
     {
         QString input = lineEdit()->text();
-        int pos = 0;
-        if (QValidator::Acceptable == validate(input, pos))
+        if (QValidator::Acceptable == validate(input))
             setValue(valueFromText(input));
         else
             lineEdit()->setText(textFromValue(m_value));
