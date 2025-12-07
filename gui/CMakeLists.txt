@@ -8,6 +8,11 @@ target_link_libraries(qlonglongspinbox PRIVATE Qt6::Widgets)
 
 target_compile_definitions(qlonglongspinbox PUBLIC  QLONGLONGSPINBOX_LIBRARY)
 
+set_target_properties(qlonglongspinbox PROPERTIES AUTOMOC ON)
+
+target_sources(qlonglongspinbox PRIVATE gui/qlonglongspinbox.h)
+
+
 otr_module(user-interface BIN)
 
 target_link_libraries(${self} PRIVATE
