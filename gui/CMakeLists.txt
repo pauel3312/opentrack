@@ -3,6 +3,7 @@ add_library(qlonglongspinbox SHARED qlonglongspinbox.cpp)
 
 target_include_directories(qlonglongspinbox PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/gui)
 
+find_package(QT NAMES Qt6 COMPONENTS Widgets REQUIRED)
 target_link_libraries(qlonglongspinbox PRIVATE Qt6::Widgets)
 
 target_compile_definitions(qlonglongspinbox PUBLIC  QLONGLONGSPINBOX_LIBRARY)
